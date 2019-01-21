@@ -18,9 +18,6 @@ import java.io.PrintWriter;
     selectors = "hello")
 public class HelloServlet extends SlingSafeMethodsServlet {
 
-    @Reference
-    HelloService helloService;
-
     @Override
     protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response)
             throws ServletException, IOException {
@@ -32,7 +29,7 @@ public class HelloServlet extends SlingSafeMethodsServlet {
         HelloModel hm = r.adaptTo(HelloModel.class);
 
         PrintWriter writer = response.getWriter();
-        writer.write("<p>"+ helloService.getGreeting() + "</p>");
+        writer.write("<p>"+ hm.getGreeting() + "</p>");
         writer.flush();
         writer.close();
     }
